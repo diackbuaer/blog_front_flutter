@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Forum',
+      title: 'Flutter Forum 1.0',
       home: LoginPage(),
     );
   }
