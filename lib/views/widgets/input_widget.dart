@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InputWidget extends StatelessWidget {
   const InputWidget({
@@ -15,10 +16,14 @@ class InputWidget extends StatelessWidget {
       child: Container(
         width: double.infinity,
         child: TextField(
+        
           obscureText: obscureText,
           controller: controller,
           decoration: InputDecoration(
-            border: OutlineInputBorder(),
+            hintStyle: GoogleFonts.inter(),
+            border: OutlineInputBorder(
+              borderSide:  BorderSide(color: Colors.black)
+            ),
             labelText: label,
           ),
         ),
