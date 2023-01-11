@@ -61,14 +61,21 @@ class _LoginPageState extends State<LoginPage> {
                         password: _passwordController.text.trim());
                   },
                   child: Obx(() {
-                    return _authenticationController.isLoading.value 
-                    ? const Center(
-                      child: CircularProgressIndicator(color: Colors.white,),
-                    ):
-                    const Text('Clik to login');
+                    return _authenticationController.isLoading.value
+                        ? const Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text(
+                            'Clik to login',
+                            style: GoogleFonts.inter(
+                              fontSize: size * 0.040,
+                            ),
+                          );
                   })),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               TextButton(
                   onPressed: () {

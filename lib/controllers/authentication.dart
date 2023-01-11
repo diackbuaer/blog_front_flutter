@@ -3,10 +3,15 @@ import 'dart:convert';
 import 'package:api_news/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+
+import '../views/home.dart';
 
 class AuthenticationController extends GetxController {
   final isLoading = false.obs;
+  final token = ''.obs;
+  final box = GetStorage();
 
   Future register({
     required String name,
@@ -33,9 +38,9 @@ class AuthenticationController extends GetxController {
 
       if (response.statusCode == 201) {
         isLoading.value = false;
-        // token.value = json.decode(response.body)['token'];
-        // box.write('token', token.value);
-        // Get.offAll(() => const HomePage());
+        token.value = json.decode(response.body)['token'];
+        box.write('token', token.value);
+        Get.offAll(() => const HomePage());
       } else {
         isLoading.value = false;
         Get.snackbar(
@@ -54,13 +59,8 @@ class AuthenticationController extends GetxController {
     }
   }
 
-
-
-
   Future login({
-    
     required String username,
-  
     required String password,
   }) async {
     try {
@@ -80,9 +80,10 @@ class AuthenticationController extends GetxController {
 
       if (response.statusCode == 200) {
         isLoading.value = false;
-        // token.value = json.decode(response.body)['token'];
-        // box.write('token', token.value);
-        // Get.offAll(() => const HomePage());
+        print(json.decode(response.body));
+        token.value = json.decode(response.body)['token'];
+        box.write('token', token.value);
+        Get.offAll(() => const HomePage());
       } else {
         isLoading.value = false;
         Get.snackbar(
